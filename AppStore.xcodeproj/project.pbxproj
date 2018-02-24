@@ -13,6 +13,7 @@
 		A183BEA32040226300139055 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A183BEA22040226300139055 /* Assets.xcassets */; };
 		A183BEA62040226300139055 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A183BEA42040226300139055 /* LaunchScreen.storyboard */; };
 		A183BEAE204087E100139055 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BEAD204087E100139055 /* CategoryCell.swift */; };
+		A183BEB020410FE300139055 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BEAF20410FE300139055 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A183BEA52040226300139055 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A183BEA72040226300139055 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A183BEAD204087E100139055 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		A183BEAF20410FE300139055 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				A183BE9B2040226300139055 /* AppDelegate.swift */,
 				A183BE9D2040226300139055 /* FeaturedViewController.swift */,
 				A183BEAD204087E100139055 /* CategoryCell.swift */,
+				A183BEAF20410FE300139055 /* Model.swift */,
 				A183BE9F2040226300139055 /* Main.storyboard */,
 				A183BEA22040226300139055 /* Assets.xcassets */,
 				A183BEA42040226300139055 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 				A183BE9E2040226300139055 /* FeaturedViewController.swift in Sources */,
 				A183BE9C2040226300139055 /* AppDelegate.swift in Sources */,
 				A183BEAE204087E100139055 /* CategoryCell.swift in Sources */,
+				A183BEB020410FE300139055 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,18 @@ import UIKit
 
 class CategoryCell : UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var appCategory : AppCategory? {
+        
+        didSet {
+            
+            if let name = appCategory?.name {
+                TitleLabel.text = name
+            }
+            
+        }
+    }
+    
+    
     let cellId = "appCellId"
     
     override init(frame: CGRect) {
@@ -37,14 +49,14 @@ class CategoryCell : UICollectionViewCell, UICollectionViewDelegate, UICollectio
     }()
     
     let dividerLine : UIView = {
-       let div = UIView()
+        let div = UIView()
         div.backgroundColor = UIColor.gray
         div.translatesAutoresizingMaskIntoConstraints = false
         return div
     }()
     
     let TitleLabel : UILabel = {
-       let title = UILabel()
+        let title = UILabel()
         title.text = "Best New App"
         title.font = UIFont.boldSystemFont(ofSize: 14)
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +76,7 @@ class CategoryCell : UICollectionViewCell, UICollectionViewDelegate, UICollectio
         
         appsCollectionView.register(AppCell.self, forCellWithReuseIdentifier: cellId)
         
-         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": TitleLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": TitleLabel]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": dividerLine]))
         
@@ -74,12 +86,18 @@ class CategoryCell : UICollectionViewCell, UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if let count = appCategory?.apps?.count {
+            return count
+        }
+        
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as!  AppCell
+        
+        cell.appCell = appCategory?.apps?[indexPath.item]
         
         return cell
     }
@@ -96,7 +114,31 @@ class CategoryCell : UICollectionViewCell, UICollectionViewDelegate, UICollectio
     }
 }
 
+
+
 class AppCell: UICollectionViewCell {
+    
+    
+    var appCell : App? {
+        didSet{
+            if let name = appCell?.name {
+                NameLabel.text = name
+            }
+            if let category = appCell?.category {
+                CategoryLabel.text = category
+            }
+            if let price = appCell?.price {
+                PriceLabel.text = "$\(price)"
+            }else {
+                PriceLabel.text = ""
+            }
+            if let image = appCell?.imgeName {
+                SetImageView.image = UIImage(named: image)
+            }
+        }
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -121,8 +163,7 @@ class AppCell: UICollectionViewCell {
     }
     
     let SetImageView : UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "frozen")
+        let image = UIImageView() 
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 16
         image.layer.masksToBounds = true

@@ -12,33 +12,37 @@ import UIKit
 let celId = "cellId"
 class FeaturedViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var appCatetories : [AppCategory]?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        appCatetories = AppCategory.homeAppCategories()
    
         collectionView?.backgroundColor = UIColor.white
-        
         
         collectionView?.register(CategoryCell.self, forCellWithReuseIdentifier: celId)
     }
 
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 3
-//    }
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if let count = appCatetories?.count {
+            return count
+        }
+        return 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: celId, for: indexPath) as! CategoryCell
+        
+        cell.appCategory =  appCatetories?[indexPath.item]
+        
         
         return cell
     }
     
     //sizeForItemAt
     
-   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: view.frame.width, height: 230)
